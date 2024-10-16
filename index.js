@@ -2,6 +2,13 @@ const express = require('express');
 const cookieParser = require('cookie-parser');
 const http = require('http');
 const path = require('path');
+const cors = require('cors');
+const corsOptions = {
+  origin: '*', // Replace with your client's origin
+  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+};
+
+app.use(cors(corsOptions));
 
 // Create the Express app
 const app = express();
