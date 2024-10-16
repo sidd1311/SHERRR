@@ -57,7 +57,7 @@ router.get('/reviews/:productId', async (req, res) => {
         const reviewsCollection = db.collection('reviews');
 
         // Find all reviews for the given product ID
-        const reviews = await reviewsCollection.find({productId: productId }).toArray();
+        const reviews = await reviewsCollection.find({productId: new ObjectId(productId)}).toArray();
 
         res.status(200).json({ reviews });
     } catch (e) {

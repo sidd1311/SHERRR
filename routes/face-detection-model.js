@@ -78,7 +78,8 @@ router.post("/image", authMiddleware, upload.single('image'), async (req, res) =
 
         // Prepare data for database
         const skinData = {
-            predictions,
+            majorType,
+            predictions
         };
 
         // Update the user's skin type in the database
@@ -96,7 +97,7 @@ router.post("/image", authMiddleware, upload.single('image'), async (req, res) =
 
         // Send response with the processed predictions and major type
         res.json({
-            skinTypes: processedPredictions,
+            skinTypes: predictions,
             majorType: majorType
         });
 
