@@ -64,6 +64,6 @@ app.use('/ht', healthRoute, analyticRoute);
 const httpServer = http.createServer(app);
 
 // Listen on a port
-httpServer.listen(5000, () => {
-  console.log('Server running on port 5000');
+httpServer.listen(80, '0.0.0.0', () => {
+  console.log('Server running on port 80');
 });
