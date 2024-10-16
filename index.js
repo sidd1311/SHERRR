@@ -7,21 +7,23 @@ const app = express();
 
 // Improved CORS Options
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://skinkare.vercel.app', 'https://oliveclear.com'], // Array of allowed origins
-  credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+  origin: ['http://localhost:3000', 'https://skinkare.vercel.app', 'https://oliveclear.com'], // Allowed origins
+  credentials: true, // Allow cookies to be sent
+  optionsSuccessStatus: 200 // To handle legacy browsers
 };
 
-app.use(cors(corsOptions)); // CORS Middleware
+app.use(cors(corsOptions));
 
-// Add headers for cookies and credentials
+// Handle Preflight Requests for all routes
+app.options('*', cors(corsOptions));
+
 app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Credentials', 'true');  // Allow cookies to be sent
-  res.header('Access-Control-Allow-Origin', req.headers.origin); // Dynamically allow origin
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  res.header('Access-Control-Allow-Credentials', 'true');
+  res.header('Access-Control-Allow-Origin', req.get('origin')); // Dynamically allow the current origin if it is listed
+  res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,DELETE,OPTIONS');
   res.header('Access-Control-Allow-Headers', 'Origin,X-Requested-With,Content-Type,Accept,Authorization');
   next();
 });
-
 // Create the Express app
 app.use(cookieParser()); // Middleware for parsing cookies
 
