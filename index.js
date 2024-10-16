@@ -7,9 +7,9 @@ const app = express();
 
 
 const corsOptions = {
-  origin: '*', // Replace with your client's origin
+  origin: ['http://localhost:3000', 'https://skinkare.vercel.app', 'https://oliveclear.com'], // Array of allowed origins
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
-};
+};  
 
 app.use(cors(corsOptions));
 
