@@ -3,6 +3,9 @@ const cookieParser = require('cookie-parser');
 const http = require('http');
 const path = require('path');
 const cors = require('cors');
+const app = express();
+
+
 const corsOptions = {
   origin: '*', // Replace with your client's origin
   credentials: true, // Allow credentials (cookies, authorization headers, etc.)
@@ -10,8 +13,9 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+
 // Create the Express app
-const app = express();
+
 app.use(cookieParser());
 
 // Import your routes
