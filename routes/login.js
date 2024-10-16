@@ -57,10 +57,10 @@ router.post('/login', async(req, res) => {
           user.password = undefined
           const options = {
             expires: new Date(Date.now() + 3 * 24 * 60 * 60 * 1000),
-            // httpOnly: true,
-            // secure: process.env.NODE_ENV === 'production',
-            // sameSite: 'strict'
-          }
+            httpOnly: true,
+            secure: process.env.NODE_ENV === 'production',
+            sameSite: 'None'
+          } 
           res.cookie("token", token, options)
           console.log(token)
           res.status(200).json({message: "Login Successful", token})
