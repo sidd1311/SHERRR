@@ -2,8 +2,11 @@ const jwt = require('jsonwebtoken');
 
 const authMiddleware = (req, res, next) => {
     
-    const token = req.cookies.token;
+    // const token = req.cookies.token;
+    const authHeader = req.headers['authorization'];
+    const token = authHeader.split(' ')[1];
     console.log(token)
+    
 
     if (!token) {
         // req.isAuthenticated = false
