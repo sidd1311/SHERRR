@@ -7,7 +7,7 @@ const app = express();
 
 // Improved CORS Options
 const corsOptions = {
-  origin: ['http://localhost:3000', 'https://skinkare.vercel.app', 'https://oliveclear.com'], // Allowed origins
+  origin: ['http://localhost:3000', 'https://skinkare.vercel.app', 'https://oliveclear.com', 'https://psudohostingolive.vercel.app'], // Allowed origins
   credentials: true, // Allow cookies to be sent
   optionsSuccessStatus: 200 // To handle legacy browsers
 };
